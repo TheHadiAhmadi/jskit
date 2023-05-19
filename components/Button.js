@@ -10,7 +10,10 @@ export function Button({ ...props }) {
     className += " y-button-size-" + props.size;
   }
 
-  return tag("button", { class: className.trim(), ...props });
+  return tag(props.href ? "a" : "button", {
+    class: className.trim(),
+    ...props,
+  });
 }
 
 export function ButtonList({ ...props }) {

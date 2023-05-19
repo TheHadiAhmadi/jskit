@@ -1,3 +1,4 @@
+import { BaseLayout } from "../components/BaseLayout.js";
 import {
   Button,
   ButtonList,
@@ -13,8 +14,19 @@ import {
   View,
 } from "../components/index.js";
 
+export const actions = {
+  POST(req) {
+    return {
+      hello: "world!",
+    };
+  },
+  GET(req) {
+    // return true;
+  },
+};
+
 export default () => {
-  return View({
+  return BaseLayout({
     slot: Card({
       slot: [
         CardHeader({

@@ -5,7 +5,7 @@ import { Page } from "../../components/Page.js";
 export default ({ url }) => {
   return Page({
     layout: AdminLayout,
-    title: "Main Page",
+    title: "Settings Page",
     body: Text({ text: "Not Available yet!" }),
   });
 };

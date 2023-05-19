@@ -1,11 +1,12 @@
 import { View } from "./View.js";
 
+let id = 0;
+
 export function Dropdown({ ...props }) {
-  console.log("Dropdown", props);
   if (props.target) {
-    console.log({ ...props.target, "@click": "open = !open" });
     props.slot = [
       {
+        id: "dropdown-" + id,
         ...props.target,
         props: { ...props.target.props, "@click": "open = !open" },
       },
