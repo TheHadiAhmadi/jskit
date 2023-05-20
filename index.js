@@ -12,20 +12,6 @@ const app = express();
 app.use(express.static(path.join(__dirname, "./public")));
 app.use(express.json());
 
-function getPageRouter(slug, page) {
-  const routes = express.Router()
-
-  const {actions, js, css, load, default: component} = page;
-
-  routes.get(slug, (req, res) => {
-
-  })
-
-
-
-  return routes;
-}
-
 registerRoutes(path.join(__dirname, "./pages")).then((routes) => {
   app.use(routes);
   const port = process.env.PORT ?? 3002;
