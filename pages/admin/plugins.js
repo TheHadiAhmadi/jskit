@@ -1,4 +1,3 @@
-import { AdminLayout } from "../../components/AdminLayout.js";
 
 import {
   
@@ -86,7 +85,6 @@ export default () => {
   }
 
   return Page({
-    layout: AdminLayout,
     title: "Plugins",
     actions: ButtonList({
       slot: [

@@ -1,10 +1,8 @@
-import { AdminLayout } from "../../../components/AdminLayout.js";
 import { Button, Dropdown, DropdownItem, DropdownMenu, Text, View } from "../../../components/index.js";
 import { Page } from "../../../components/Page.js";
 
 export default ({ url }) => {
   return Page({
-    layout: AdminLayout,
     title: "Users list Page",
     body: View({
       slot: [

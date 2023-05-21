@@ -1,4 +1,3 @@
-import { AdminLayout } from "../../components/AdminLayout.js"
 import { Page } from "../../components/Page.js"
 import { TabContent, TabItem, TabList, TabPanel, Tabs } from "../../components/Tabs.js"
 import { Card, CardBody, CardHeader } from "../../components/index.js"
@@ -9,7 +8,6 @@ function Icon({name, ...props}) {
 
 export default () => {
     return Page({
-        layout: AdminLayout,
         body: Card({
             slot: Tabs({
                 

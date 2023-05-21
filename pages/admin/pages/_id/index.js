@@ -4,12 +4,10 @@ import {
   Text,
   View,
 } from "../../../../components/index.js";
-import { AdminLayout } from "../../../../components/AdminLayout.js";
 import { Page } from "../../../../components/Page.js";
 
 export function PageEditor({ params, editing }) {
   return Page({
-    layout: AdminLayout,
     title: (editing ? "Edit" : "View") + ": Page #" + params.id,
     actions: editing
       ? [

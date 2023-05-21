@@ -1,6 +1,4 @@
-import { Html } from "./Html.js";
-import { Script } from "./Script.js";
-import { Style } from "./Style.js";
+
 import { Text } from "./Text.js";
 import { View } from "./View.js";
 
@@ -17,11 +15,7 @@ export function Page(props) {
 
   let layout = props.layout ?? View;
 
-  return Html({
-    head: [
-      Style({src: '/tabler.min.css'}),
-    ],
-    body: layout({
+  return layout({
       slot: View({
       gap: 3,
       p: 3,
@@ -29,6 +23,5 @@ export function Page(props) {
       style: "width: 100%",
       slot: [title, props.body],
     }),
-  }),
   })
 }
