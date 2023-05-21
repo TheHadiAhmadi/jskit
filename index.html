@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div data-dropdown class="dropdown-1">
+        <div class="dropdown-toggle">Button</div>
+        <div class="dropdown-menu">
+            <div class="dropdown-item">1</div>
+            <div class="dropdown-item">2</div>
+            <div class="dropdown-item">3</div>
+        </div>
+    </div>
+    <script>
+
+        function dropdown(el) {
+            el.querySelector('.dropdown-toggle').addEventListener('click', () => { 
+                el.querySelector('.dropdown-menu').classList.toggle('open');
+            })
+            el.querySelectorAll('.dropdown-item').forEach(el2 => {
+                el2.addEventListener('click', (e) => {
+                    console.log('click on dropdown item', e)
+                })
+            })
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('[data-dropdown]').forEach(el => {
+                dropdown(el)
+            })
+        })
+    </script>
+</body>
+</html>

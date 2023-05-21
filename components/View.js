@@ -25,7 +25,5 @@ export function View({ p, m, mb, gap, column, justify, align, ...props }) {
     className += " y-el-gap-" + gap;
   }
 
-  console.log("View", props);
-
   return tag("div", { class: className.trim(), ...props });
 }

@@ -1,4 +1,5 @@
-import { BaseLayout } from "../components/BaseLayout.js";
+import { Html } from "../components/Html.js";
+import { Style } from "../components/Style.js";
 import {
   Button,
   ButtonList,
@@ -26,8 +27,9 @@ export const actions = {
 };
 
 export default () => {
-  return BaseLayout({
-    slot: Card({
+  return Html({
+    head: [Style({src: '/tabler.min.css'})],
+    body: Card({
       slot: [
         CardHeader({
           slot: [
@@ -62,6 +64,66 @@ export default () => {
                     ],
                   }),
                 }),
+                Dropdown({
+                  target: Button({ slot: "Dropdown" }),
+                  slot: DropdownMenu({
+                    slot: [
+                      DropdownItem({
+                        slot: "Item 1",
+                        onClick: "console.log(1)",
+                      }),
+                      DropdownItem({
+                        slot: "Item 2",
+                        onClick: "console.log(2)",
+                      }),
+                      DropdownItem({ divider: true }),
+                      DropdownItem({
+                        slot: "Item 3",
+                        onClick: "console.log(3)",
+                      }),
+                    ],
+                  }),
+                }),
+                Dropdown({
+                  target: Button({ slot: "Dropdown" }),
+                  slot: DropdownMenu({
+                    slot: [
+                      DropdownItem({
+                        slot: "Item 1",
+                        onClick: "console.log(1)",
+                      }),
+                      DropdownItem({
+                        slot: "Item 2",
+                        onClick: "console.log(2)",
+                      }),
+                      DropdownItem({ divider: true }),
+                      DropdownItem({
+                        slot: "Item 3",
+                        onClick: "console.log(3)",
+                      }),
+                    ],
+                  }),
+                }),
+                Dropdown({
+                  target: Button({ slot: "Dropdown" }),
+                  slot: DropdownMenu({
+                    slot: [
+                      DropdownItem({
+                        slot: "Item 1",
+                        onClick: "console.log(1)",
+                      }),
+                      DropdownItem({
+                        slot: "Item 2",
+                        onClick: "console.log(2)",
+                      }),
+                      DropdownItem({ divider: true }),
+                      DropdownItem({
+                        slot: "Item 3",
+                        onClick: "console.log(3)",
+                      }),
+                    ],
+                  }),
+                }),
                 Button({
                   slot: "Back",
                   //   "@click"() {
@@ -75,7 +137,6 @@ export default () => {
           }),
         }),
       ],
-    }),
-    padding: "3",
-  });
+    })
+  })
 };

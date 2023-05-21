@@ -1,4 +1,4 @@
-import { BaseLayout } from "../components/BaseLayout.js";
+import { Html } from "../components/Html.js";
 import { tag } from "../lib/ui.js";
 
 export const css = `
@@ -14,7 +14,7 @@ function test(value) {
 `;
 
 export default () => {
-  return BaseLayout({
+  return Html({
     slot: tag("div", {
       slot: [
         tag("div", {

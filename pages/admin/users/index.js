@@ -1,11 +1,28 @@
 import { AdminLayout } from "../../../components/AdminLayout.js";
-import { Text } from "../../../components/index.js";
+import { Button, Dropdown, DropdownItem, DropdownMenu, Text, View } from "../../../components/index.js";
 import { Page } from "../../../components/Page.js";
 
 export default ({ url }) => {
   return Page({
     layout: AdminLayout,
     title: "Users list Page",
-    body: Text({ text: "Not Available yet!" }),
+    body: View({
+      slot: [
+        Text({slot: 'Checking Dropdown....'}),
+        Dropdown({
+          target: Button({
+            slot: 'Click me',
+            color: 'primary'
+          }),
+          slot: DropdownMenu({
+            slot: [
+              DropdownItem({slot: 'Text 1'}),
+              DropdownItem({slot: 'Text 2'}),
+              DropdownItem({slot: 'Text 3'}),
+            ]
+          })
+        }),
+      ]
+    }),
   });
 };
