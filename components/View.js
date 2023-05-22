@@ -1,29 +1,283 @@
-import { tag } from "../lib/ui.js";
+import { tag as tagFn } from "../lib/ui.js";
+import { classname } from "../lib/utils.js";
 
-export function View({ p, m, mb, gap, column, justify, align, ...props }) {
-  let className = "y-el y-el-d-flex";
-  props.style ??= "";
-  if (column) {
-    props.style += "; flex-direction: column";
-  }
-  if (p) {
-    className += " y-el-p-" + p;
-  }
-  if (justify) {
-    className += " y-el-justify-content-" + justify;
-  }
-  if (align) {
-    className += " y-el-align-items-" + align;
-  }
-  if (m) {
-    className += " y-el-m-" + m;
-  }
-  if (mb) {
-    className += " y-el-mb-" + mb;
-  }
-  if (gap) {
-    className += " y-el-gap-" + gap;
-  }
+let globalCounter = 0
+export function View(props) {
+  //  bind element....
+  // element,
+  
+  // events
+	// components,
 
-  return tag("div", { class: className.trim(), ...props });
+
+
+
+
+  const {
+    componentName = 'el',
+    id = componentName + '_' + globalCounter++,
+    cssProps = {},
+    tag = 'div',
+    value,
+    title,
+    tabindex,
+    role,
+    ariaLabel,
+    ariaValuenow,
+    style,
+    show,
+    onMount,
+
+    gap,
+    vAlign,
+    shadow,
+    hidden,
+    bgColor,
+    bgGradient,
+    bgOpacity,
+    border,
+    borderTop,
+    borderStart,
+    borderEnd,
+    borderBottom,
+    borderColor,
+    borderRadius,
+    borderRoundSize,
+    borderOpacity,
+    p,
+    pt,
+    pb,
+    ps,
+    pe,
+    px,
+    py,
+    m,
+    mt,
+    mb,
+    ms,
+    me,
+    mx,
+    my,
+    clearfix,
+    ratio,
+    sticky,
+    fixed,
+    d,
+    dSm,
+    dMd,
+    dLg,
+    dXl,
+    dXxl,
+    dPrint,
+    w,
+    h,
+    mw,
+    mh,
+    position,
+    top,
+    start,
+    bottom,
+    end,
+    textColor,
+    textAlign,
+    textAlignSm,
+    textAlignMd,
+    textAlignLg,
+    textAlignXl,
+    textWrap,
+    textTransform,
+    textDecoration,
+    lineHeight,
+    textMuted,
+    textLead,
+    textHeading,
+    textTruncate,
+    textOpacity,
+    fontSize,
+    fontWeight,
+    fontStyle,
+    float,
+    floatSm,
+    floatMd,
+    floatLg,
+    floatXl,
+    floatXxl,
+    container,
+    col,
+    colSm,
+    colMd,
+    colLg,
+    colXl,
+    colXxl,
+    order,
+    orderSm,
+    orderMd,
+    orderLg,
+    orderXl,
+    orderXxl,
+    offset,
+    offsetSm,
+    offsetMd,
+    offsetLg,
+    offsetXl,
+    offsetXxl,
+    row,
+    rowCols,
+    rowColsSm,
+    rowColsMd,
+    rowColsLg,
+    rowColsXl,
+    rowColsXxl,
+    g,
+    gSm,
+    gMd,
+    gLg,
+    gXl,
+    gXxl,
+    gx,
+    gy,
+    alignItems,
+    alignSelf,
+    justifyContent,
+  
+     ...restProps
+    } = props
+
+    let defaultCssProps = {
+      gap,
+      vAlign,
+      shadow,
+      hidden,
+      bgColor,
+      bgGradient,
+      bgOpacity,
+      border,
+      borderTop,
+      borderStart,
+      borderEnd,
+      borderBottom,
+      borderColor,
+      borderRadius,
+      borderRoundSize,
+      borderOpacity,
+      p,
+      pt,
+      pb,
+      ps,
+      pe,
+      px,
+      py,
+      m,
+      mt,
+      mb,
+      ms,
+      me,
+      mx,
+      my,
+      clearfix,
+      ratio,
+      sticky,
+      fixed,
+      d,
+      dSm,
+      dMd,
+      dLg,
+      dXl,
+      dXxl,
+      dPrint,
+      w,
+      h,
+      mw,
+      mh,
+      position,
+      top,
+      start,
+      bottom,
+      end,
+      textColor,
+      textAlign,
+      textAlignSm,
+      textAlignMd,
+      textAlignLg,
+      textAlignXl,
+      textWrap,
+      textTransform,
+      textDecoration,
+      lineHeight,
+      textMuted,
+      textLead,
+      textHeading,
+      textTruncate,
+      textOpacity,
+      fontSize,
+      fontWeight,
+      fontStyle,
+      float,
+      floatSm,
+      floatMd,
+      floatLg,
+      floatXl,
+      floatXxl,
+      container,
+      col,
+      colSm,
+      colMd,
+      colLg,
+      colXl,
+      colXxl,
+      order,
+      orderSm,
+      orderMd,
+      orderLg,
+      orderXl,
+      orderXxl,
+      offset,
+      offsetSm,
+      offsetMd,
+      offsetLg,
+      offsetXl,
+      offsetXxl,
+      row,
+      rowCols,
+      rowColsSm,
+      rowColsMd,
+      rowColsLg,
+      rowColsXl,
+      rowColsXxl,
+      g,
+      gSm,
+      gMd,
+      gLg,
+      gXl,
+      gXxl,
+      gx,
+      gy,
+      alignItems,
+      alignSelf,
+      justifyContent,  
+    }
+
+    let classes = classname('el', defaultCssProps, props.class)
+
+		if (componentName !== 'el') {
+      classes += ' ' + classname(componentName, cssProps)
+    }
+
+    const elProps = {
+			id,
+			class: classes,
+			title,
+			tabindex,
+			role,
+			// ariaCurrent,
+			ariaLabel,
+			ariaValuenow,
+			style,
+		}
+
+    if(onMount) {
+      elProps[classname(componentName)] = onMount
+    }
+
+  return tagFn(tag, { ...elProps, ...restProps });
 }

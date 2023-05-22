@@ -1,26 +1,72 @@
-import { Text } from "./Text.js";
 import { View } from "./View.js";
 
-export function Card({ title, ...props }) {
-  if (title) {
-    props.slot = [CardHeader({ slot: CardTitle({ slot: title }) }), props.slot];
+// all Card components are 100% same as yesvelte
+
+export function Card({
+  componentName = 'card',
+  title,
+  stacked,
+  statusColor,
+  statusPosition,
+  statusSize,
+  status,
+  bgColor,
+  borderless,
+  rotate,
+  state,
+  size, 
+  slot,
+  ...restProps 
+}) {
+
+  let cssProps = {
+    stacked,
+    bgColor,
+    borderless,
+    rotate,
+    state,
+    size,
   }
-  return View({ class: "y-card", ...props });
+  let props = {
+    componentName,
+  }
+
+  let statusCssProps = {
+    size: statusSize,
+    position: statusPosition,
+    color: statusColor,
+  }
+  
+  if (title) {
+    props.slot = [, props.slot];
+  }
+  return View({ ...restProps, cssProps, ...props, slot: [
+    status && View({componentName: componentName + '-status', cssProps: statusCssProps}),
+    title && CardHeader({ slot: CardTitle({ slot: title }) }),
+    ...slot
+  ] });
 }
 
-export function CardHeader(props) {
-  return View({ class: "y-card-header", ...props });
+export function CardHeader({light, componentName = 'card-header', slot, ...restProps}) {
+  return View({ componentName, cssProps: {light}, slot, ...restProps });
 }
 
-export function CardTitle(props) {
-  return Text({ class: "y-card-title", tag: "h3", ...props });
+export function CardFooter({transparent, componentName = 'card-footer', slot, ...restProps}) {
+  return View({ componentName, cssProps: {transparent}, slot, ...restProps });
 }
-export function CardBody({ ...props }) {
-  return View({ class: "y-card-body", ...props });
+
+export function CardTitle({ componentName = 'card-title', slot, ...restProps }) {
+  return View({ componentName, slot, ...restProps });
 }
-export function CardFooter({ ...props }) {
-  return View({ class: "y-card-footer", ...props });
+
+export function CardBody({ componentName = 'card-body', slot, ...restProps }) {
+  return View({ componentName, slot, ...restProps });
 }
-export function CardActions({ ...props }) {
-  return View({ class: "y-card-actions", ...props });
+
+export function CardActions({ componentName = 'card-actions', slot, ...restProps }) {
+  return View({ componentName, slot, ...restProps });
+}
+
+export function CardMedia({ componentName = 'card-media', elementPosition = 'top', slot, ...restProps }) {
+  return View({ componentName, slot, cssProps: {elementPosition}, ...restProps });
 }

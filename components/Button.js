@@ -1,21 +1,52 @@
 import { tag } from "../lib/ui.js";
+import { View } from "./View.js";
 
-export function Button({ ...props }) {
-  let className = "y-button";
+// icon prop doesn't work.
 
-  if (props.color) {
-    className += " y-button-color-" + props.color;
+export function Button({ active,
+  color,
+  componentName = 'button',
+  disabled,
+  ghost,
+  href,
+  link,
+  loading,
+  outline,
+  shape,
+  size,
+  target,
+  type,
+  ...restProps }) {
+
+  let cssProps = {
+    active,
+    color,
+    disabled,
+    ghost,
+    icon: true,
+    link,
+    loading,
+    outline,
+    shape,
+    size,
   }
-  if (props.size) {
-    className += " y-button-size-" + props.size;
+
+  let props = {
+    componentName,
+    href,
+    role: 'button',
+    tag: href ? 'a' : 'button',
+    target,
+    type: type ?? 'button',
   }
 
-  return tag(props.href ? "a" : "button", {
-    class: className.trim(),
+  return View({
     ...props,
+    cssProps,
+    ...restProps
   });
 }
 
 export function ButtonList({ ...props }) {
-  return tag("div", { class: "y-el y-el-d-flex y-el-gap-2", ...props });
+  return View({ d: 'flex', gap: 2, ...props });
 }
