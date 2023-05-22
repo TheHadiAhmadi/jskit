@@ -34,25 +34,26 @@ export function AdminLayout(props) {
     },
   ];
   return View({
-      column: true,
-      style: "width: 100%",
+      style: "width: 100%; flex-direction: column",
       slot: [
         View({
-          justify: "betwen",
-          align: "center",
+          justifyContent: "betwen",
+          alignItems: "center",
+          borderBottom: true,
+          d: 'flex',
           p: 3,
-          style: "width: 100%; height: 56px; border-bottom: 1px solid gray",
+          style: "width: 100%; height: 56px",
           slot: [
-            Text({ text: "UBuilder", tag: "h3", style: "margin: 0" }),
+            View({ slot: "UBuilder", tag: "h3", m: 0 }),
             Button({
-              style: "margin-left: auto",
+              ms: 'auto',
               slot: "Logout",
               href: "/",
             }),
           ],
         }),
         View({
-          'u-admin': function(el) {
+          onMount (el) {
             async function fetchPartial(pathname) {
               const page = await fetch(pathname).then(res => res.text())
               console.log(page)
@@ -104,7 +105,7 @@ export function AdminLayout(props) {
             View({
               'u-body': true,
               style:
-                "width: 100%; margin-left: 240px; overflow: auto; height: calc(100vh - 56px)",
+                "margin-left: 240px; overflow: auto; height: calc(100vh - 56px)",
               slot: props.slot,
             }),
           ],

@@ -8,6 +8,7 @@ import {
   CardBody,
   CardFooter,
   Text,
+  View,
 } from "../../components/index.js";
 import { Page } from "../../components/Page.js";
 
@@ -98,13 +99,18 @@ export default () => {
         }),
       ],
     }),
-    body: plugins.map((plugin) =>
-      PluginCard({
-        toggle: () => togglePlugin(plugin.id),
-        active: plugin.active,
-        title: plugin.title,
-        description: plugin.description,
-      })
-    ),
+    body: View({ 
+      d: 'flex',
+      style: 'flex-direction: column',
+      gap: 2,
+      slot: plugins.map((plugin) =>
+        PluginCard({
+          toggle: () => togglePlugin(plugin.id),
+          active: plugin.active,
+          title: plugin.title,
+          description: plugin.description,
+        })
+      )
+    }),
   });
 };
